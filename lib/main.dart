@@ -99,7 +99,9 @@ class _AnimatedContainerDemoState extends State<AnimatedContainerDemo> {
         SizedBox(
           width: 128,
           height: 128,
-          child: Container(
+          child: AnimatedContainer(
+            duration: Duration(seconds: 1),
+            curve: Curves.easeInOutBack,
             margin: EdgeInsets.all(margin),
             decoration: BoxDecoration(
               color: color,
@@ -113,7 +115,11 @@ class _AnimatedContainerDemoState extends State<AnimatedContainerDemo> {
             'change',
             style: TextStyle(color: Colors.white),
           ),
-          onPressed: () => null,
+          onPressed: () => setState(() {
+            color = randomColor();
+            borderRadius = randomBorderRadius();
+            margin = randomMargin();
+          }),
         ),
       ],
     );
